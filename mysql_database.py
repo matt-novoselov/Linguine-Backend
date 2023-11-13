@@ -47,7 +47,7 @@ mydb = None
 async def get_stats():
     async with await get_cursor() as cur:
         try:
-            sql = "SELECT JSON_OBJECTAGG(Name, Score) as Scores FROM Triolingo ORDER BY Score"
+            sql = "SELECT JSON_OBJECTAGG(user_name, Score) as Scores FROM Triolingo ORDER BY Score"
             await cur.execute(sql)
             chart_stats = await cur.fetchall()
 
@@ -58,11 +58,11 @@ async def get_stats():
             pass
 
 
-async def get_score(selected_name: str):
+async def get_score(selected_user_id: str):
     async with await get_cursor() as cur:
         try:
-            query = "SELECT score FROM Triolingo WHERE Name = %s"
-            data_query = (selected_name,)
+            query = "SELECT score FROM Triolingo WHERE user_id = %s"
+            data_query = (selected_user_id,)
             await cur.execute(query, data_query)
             current_score = await cur.fetchall()  # Get current score
             return current_score[0][0]
@@ -72,10 +72,10 @@ async def get_score(selected_name: str):
             pass
 
 
-async def update_score(name: str, amount: int):
+async def update_score(user_id: str, amount: int):
     async with await get_cursor() as cur:
         try:
-            current_score = await get_score(name)
+            current_score = await get_score(user_id)
 
             print(current_score)
 
@@ -85,8 +85,8 @@ async def update_score(name: str, amount: int):
 
             print(new_score)
 
-            sql = "UPDATE Triolingo SET Score = %s WHERE Name = %s"
-            val = (new_score, name)
+            sql = "UPDATE Triolingo SET Score = %s WHERE user_id = %s"
+            val = (new_score, user_id)
             await cur.execute(sql, val)
             await mydb.commit()  # Update DB Score
 

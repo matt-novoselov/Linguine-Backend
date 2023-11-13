@@ -17,12 +17,12 @@ async def get_stats():
     return json.loads(stats_data)
 
 
-@app.get('/get_score/{name}')
-async def get_stats(name: str):
-    score_data = await mysql_database.get_score(name)
+@app.get('/get_score/{user_id}')
+async def get_stats(user_id: str):
+    score_data = await mysql_database.get_score(user_id)
     return score_data
 
-@app.get('/update_score/{name}/{amount}')
-async def get_stats(name: str, amount: int):
-    score_data = await mysql_database.update_score(name, amount)
+@app.get('/update_score/{user_id}/{amount}')
+async def get_stats(user_id: str, amount: int):
+    score_data = await mysql_database.update_score(user_id, amount)
     return score_data
