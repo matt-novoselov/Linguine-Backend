@@ -47,7 +47,7 @@ mydb = None
 async def get_stats():
     async with await get_cursor() as cur:
         try:
-            sql = "SELECT JSON_OBJECTAGG(user_name, Score) as Scores FROM Triolingo ORDER BY Score"
+            sql = "SELECT JSON_OBJECTAGG(nickname, score) as scores FROM Triolingo ORDER BY score"
             await cur.execute(sql)
             chart_stats = await cur.fetchall()
 
@@ -85,10 +85,10 @@ async def update_score(user_id: str, amount: int):
 
             print(new_score)
 
-            sql = "UPDATE Triolingo SET Score = %s WHERE user_id = %s"
+            sql = "UPDATE Triolingo SET score = %s WHERE user_id = %s"
             val = (new_score, user_id)
             await cur.execute(sql, val)
-            await mydb.commit()  # Update DB Score
+            await mydb.commit()  # Update DB score
 
             return new_score
 
