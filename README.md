@@ -1,3 +1,3 @@
-# Triolingo-backend
+# Linguine backend
 
-FastAPI backend for Triolingo
+FastAPI backend for Linguine
