@@ -18,11 +18,12 @@ async def get_stats():
 
 
 @app.get('/get_score/{user_id}')
-async def get_stats(user_id: str):
+async def get_score(user_id: str):
     score_data = await mysql_database.get_score(user_id)
     return score_data
 
-@app.get('/update_score/{user_id}/{amount}')
-async def get_stats(user_id: str, amount: int):
+
+@app.patch('/update_score/{user_id}/{amount}')
+async def update_score(user_id: str, amount: int):
     score_data = await mysql_database.update_score(user_id, amount)
     return score_data
