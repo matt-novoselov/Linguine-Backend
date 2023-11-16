@@ -50,7 +50,7 @@ async def get_stats():
             sql = "SELECT nickname, score FROM Triolingo ORDER BY score"
             await cur.execute(sql)
             chart_stats = await cur.fetchall()
-            user_list = [{'name': name, 'score': score} for name, score in chart_stats]
+            user_list = [{'name': name, 'score': score} for name, score in chart_stats][::-1]
 
             return {'users': user_list}
 
