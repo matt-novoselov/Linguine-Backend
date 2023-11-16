@@ -14,13 +14,13 @@ async def _startup():
 @app.get('/get_stats')
 async def get_stats():
     stats_data = await mysql_database.get_stats()
-    return json.loads(stats_data)
+    return stats_data
 
 
 @app.get('/get_score/{user_id}')
 async def get_score(user_id: str):
     score_data = await mysql_database.get_score(user_id)
-    return score_data
+    return {"score": score_data}
 
 
 @app.patch('/update_score/{user_id}/{amount}')

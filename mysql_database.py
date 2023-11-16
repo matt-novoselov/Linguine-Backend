@@ -3,6 +3,7 @@ import asyncio
 import aiomysql
 from aiomysql import Error
 from dotenv import load_dotenv
+import json
 
 load_dotenv()
 # - - - - - - - - - - #
@@ -47,11 +48,25 @@ mydb = None
 async def get_stats():
     async with await get_cursor() as cur:
         try:
-            sql = "SELECT JSON_OBJECTAGG(nickname, score) as scores FROM Triolingo ORDER BY score"
+            #sql = "SELECT JSON_OBJECTAGG(nickname, score) as scores FROM Triolingo ORDER BY score"
+            sql = "SELECT nickname, score FROM Triolingo ORDER BY score"
             await cur.execute(sql)
             chart_stats = await cur.fetchall()
 
-            return chart_stats[0][0]
+            print(chart_stats)
+
+            user_list = [{'name': name, 'score': score} for name, score in chart_stats]
+
+            # Create a dictionary with the 'users' key
+            json_data = {'users': user_list}
+
+            # Convert the dictionary to JSON
+            json_response = json.dumps(json_data, indent=2)
+
+            # Print or return the JSON response
+            print(json_response)
+
+            return json_response
 
         except Error as e:
             print(f'[!] There was an error in getting stats: {e}')
