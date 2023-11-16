@@ -14,6 +14,7 @@ async def _startup():
 @app.get('/get_stats')
 async def get_stats():
     stats_data = await mysql_database.get_stats()
+    print(stats_data)
     return stats_data
 
 
