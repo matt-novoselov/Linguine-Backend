@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 import mysql_database
-import json
 
 app = FastAPI()  # --reload
 
@@ -14,7 +13,6 @@ async def _startup():
 @app.get('/get_stats')
 async def get_stats():
     stats_data = await mysql_database.get_stats()
-    print(stats_data)
     return stats_data
 
 
@@ -27,4 +25,6 @@ async def get_score(user_id: str):
 @app.patch('/update_score/{user_id}/{amount}')
 async def update_score(user_id: str, amount: int):
     score_data = await mysql_database.update_score(user_id, amount)
+
+    print(f"[v] {user_id} updated his score by {amount}")
     return {"score": score_data}

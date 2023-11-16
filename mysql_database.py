@@ -78,13 +78,9 @@ async def update_score(user_id: str, amount: int):
         try:
             current_score = await get_score(user_id)
 
-            print(current_score)
-
             new_score = current_score + amount  # Calculate new score
             if new_score < 0:
                 new_score = 0
-
-            print(new_score)
 
             sql = "UPDATE Triolingo SET score = %s WHERE user_id = %s"
             val = (new_score, user_id)
