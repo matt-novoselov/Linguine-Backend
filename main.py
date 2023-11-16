@@ -26,4 +26,4 @@ async def get_score(user_id: str):
 @app.patch('/update_score/{user_id}/{amount}')
 async def update_score(user_id: str, amount: int):
     score_data = await mysql_database.update_score(user_id, amount)
-    return score_data
+    return {"score": score_data}
