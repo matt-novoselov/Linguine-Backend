@@ -30,5 +30,4 @@ async def update_score(user_id: str, amount: int):
 
 @app.post('/add_user/{user_id}/{nickname}')
 async def add_user(user_id: str, nickname: str):
-    score_data = await mysql_database.add_user(user_id, nickname)
-    return {"score": score_data}
+    await mysql_database.add_user(user_id, nickname)
