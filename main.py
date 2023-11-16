@@ -22,12 +22,12 @@ async def get_score(user_id: str):
     return {"score": score_data}
 
 
-@app.patch('/update_score/{user_id}/{amount}')
+@app.get('/update_score/{user_id}/{amount}')
 async def update_score(user_id: str, amount: int):
     score_data = await mysql_database.update_score(user_id, amount)
     return {"score": score_data}
 
 
-@app.post('/add_user/{user_id}/{nickname}')
+@app.get('/add_user/{user_id}/{nickname}')
 async def add_user(user_id: str, nickname: str):
     await mysql_database.add_user(user_id, nickname)
