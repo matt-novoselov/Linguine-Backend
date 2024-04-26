@@ -11,6 +11,9 @@ Backend code for Linguine - your online language-learning companion, designed to
   <img src="https://github.com/matt-novoselov/Linguine-Backend/blob/b9a6f794c6286ffa10ee1c40ce3a817e1ed780b2/LinguineApp.png" alt="GIF">
 </a>
 
+[![](https://github.com/matt-novoselov/matt-novoselov/blob/34555effedede5dd5aa24ae675218d989e976cf6/Files/YouTube_Badge.svg)](https://youtu.be/bDzZPEOf0J8)
+
+
 ## Description
 FastAPI on Railway, MySQL on AWS, Cloudflare, Auth0 by Okta, [Frontend](https://github.com/matt-novoselov/Linguine-frontend) !!!!!
 
