@@ -15,7 +15,20 @@ Backend code for Linguine - your online language-learning companion, designed to
 
 
 ## Description
-FastAPI on Railway, MySQL on AWS, Cloudflare, Auth0 by Okta, [Frontend](https://github.com/matt-novoselov/Linguine-frontend) !!!!!
+This is a custom backend server developed using **FastAPI**, which is required to manage user registration, score updates, and leaderboard management for the Linguine app. The app utilizes the **API endpoints** of this server to transmit data. Detailed information about the source code of the app can be found in the [Readme file of the Linguine frontend repository](https://github.com/matt-novoselov/Linguine-frontend). Furthermore, detailed instructions on deploying your own Linguine backend server can be found in the [Installation section](#installation).
+
+The server is built using **FastAPI** and includes the following endpoints:
+
+- `/get_stats`: Retrieves statistical data from the database. Returns a **JSON file** with user nicknames and their scores in decreasing order.
+- `/get_score/{user_id}`: Retrieves score data for a **specific user** from the database, where `user_id` is a String. Returns the user's score as a String.
+- `/update_score/{user_id}/{amount}`: Updates the score for a **specific user** in the database, where `user_id` is a String and `amount` is an Integer. Pass a positive integer to increase the user's score and a negative integer to decrease it. Returns the updated user score as a String. Note that a score cannot go lower than 0.
+- `/add_user/{user_id}/{nickname}`: Adds a **new user** to the database, where `user_id` is a String and `nickname` is a String.
+
+For detailed API documentation, please refer to [this link](https://mattapi.fun/docs).
+
+For secure authentication and authorization, the app uses **Auth0**. Auth0 meets all requirements and certificates, including GDPR and HIPAA. The login process involves storing the user’s nickname and score in the database to enable functionality of a leaderboard showcasing top-ranking users. Additionally, sign-in and sign-out functionality help synchronize user progress across various devices.
+
+The backend server connects to a **MySQL database** to store users' scores and nicknames.
 
 ![](https://github.com/matt-novoselov/Linguine-Backend/blob/ad7c3867903b89cf02f92b25bdd3b0de3af95106/BackendDiagram.png)
 
