@@ -5,7 +5,7 @@
   </h2>
 </p>
 
-Backend code for Linguine - your online language-learning companion, designed to transform education into an enjoyable, gamified experience. Dive into complete lessons and engage in friendly competition with your peers!
+Backend code for Linguine - an online language-learning app designed to make education an enjoyable gamified experience. Complete lessons, practice, earn points, and compete with your friends for the highest score!
 
 <a href="https://youtu.be/bDzZPEOf0J8" target="_blank">
   <img src="https://github.com/matt-novoselov/Linguine-Backend/assets/59065228/02f11e91-ef30-4784-91ee-b525a6ad4429" alt="GIF">
