@@ -15,11 +15,11 @@ loop = asyncio.get_event_loop()
 async def connect_db():
     try:
         connection = await aiomysql.connect(
-            host=os.getenv("HOST"),
-            port=24021,
+            host=os.getenv("DB_HOST"),
+            port=int(os.getenv("DB_PORT")),
             user=os.getenv("DB_USERNAME"),
-            password=os.getenv("PASSWORD"),
-            db=os.getenv("DATABASE"),
+            password=os.getenv("DB_PASSWORD"),
+            db=os.getenv("DB_NAME"),
             loop=loop,
         )
 
@@ -58,7 +58,7 @@ async def get_stats():
             # Fetching all the results returned by the query
             chart_stats = await cur.fetchall()
 
-            # Creating a list of dictionaries containing user names and scores from the fetched data,
+            # Creating a list of dictionaries containing usernames and scores from the fetched data,
             # Reversing the order to have the highest scores first
             user_list = [{'name': name, 'score': score} for name, score in chart_stats][::-1]
 
@@ -89,7 +89,6 @@ async def get_score(selected_user_id: str):
         except Error as e:
             print(f'[!] There was an error in trying to get score: {e}')
             pass
-
 
 
 # Function to update the score of the particular User by the User ID
@@ -124,7 +123,6 @@ async def update_score(user_id: str, amount: int):
         except Error as e:
             print(f'[!] There was an error in updating user score: {e}')
             pass
-
 
 
 # Function to add new user to the database

@@ -1,1 +1,1 @@
-web: uvicorn main:app --host 0.0.0.0 --port $PORT --log-level critical
+web: hypercorn main:app --bind [::]:$PORT --root-path ${API_ROOT_PATH}
