@@ -16,7 +16,7 @@ async def connect_db():
     try:
         connection = await aiomysql.connect(
             host=os.getenv("DB_HOST"),
-            port=os.getenv("DB_PORT"),
+            port=int(os.getenv("DB_PORT")),
             user=os.getenv("DB_USERNAME"),
             password=os.getenv("DB_PASSWORD"),
             db=os.getenv("DB_NAME"),
