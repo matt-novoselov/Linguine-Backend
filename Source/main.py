@@ -42,13 +42,3 @@ async def update_score(user_id: str, amount: int):
 async def add_user(user_id: str, nickname: str):
     # Call a function to add a new user to the database
     await mysql_database.add_user(user_id, nickname)
-
-
-@app.get("/docs", include_in_schema=False)
-async def custom_swagger_ui_html(req: Request):
-    root_path = req.scope.get("root_path", "").rstrip("/")
-    openapi_url = root_path + app.openapi_url
-    return get_swagger_ui_html(
-        openapi_url=openapi_url,
-        title="API",
-    )
