@@ -1,1 +1,1 @@
-web: uvicorn main:app --host [::] --port $PORT --log-level critical
+web: hypercorn main:app --bind [::]:$PORT --log-level critical
