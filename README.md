@@ -50,7 +50,7 @@ The backend server connects to a **MySQL database** to store users' scores and n
    - DB_USERNAME: The username used to access your MySQL database.
    - DB_PASSWORD: The password associated with the provided username for accessing the MySQL database.
    - DB_NAME: The name of the MySQL database your bot will use.
-5. Build and run `main.py` using hypercorn. Example: `hypercorn main:app --bind [::]:$PORT3`
+5. Build and run `main.py` using hypercorn. Example: `hypercorn main:app --bind [::]:$PORT`
 
 <br>
 
