@@ -34,10 +34,10 @@ The backend server connects to a **MySQL database** to store users' scores and n
 
 ## Requirements
 - Python 3.8
-- python-dotenv 1.0.0
-- aiomysql 0.2.0
 - fastapi 0.109.1
-- uvicorn 0.23.2
+- hypercorn 0.17.3
+- aiomysql 0.2.0
+- python-dotenv 1.0.1
 
 ## Installation
 1. Clone repository using the following URL: `https://github.com/matt-novoselov/Linguine-Backend.git`
@@ -45,11 +45,12 @@ The backend server connects to a **MySQL database** to store users' scores and n
    - Create a file named `.env` in the root directory of the source folder.
    - Use the provided `.env.example` file as a template.
 3. Replace the placeholder values with your specific configuration:
-   - HOST: This is the host address for your MySQL database.
+   - API_ROOT_PATH: Root path is `/` my default. Change it if you are using a proxy.
+   - DB_HOST: This is the host address for your MySQL database.
    - DB_USERNAME: The username used to access your MySQL database.
-   - PASSWORD: The password associated with the provided username for accessing the MySQL database.
-   - DATABASE: The name of the MySQL database your bot will use.
-4. Build and run using uvicorn `web: uvicorn main:app --host 0.0.0.0 --port $PORT`
+   - DB_PASSWORD: The password associated with the provided username for accessing the MySQL database.
+   - DB_NAME: The name of the MySQL database your bot will use.
+5. Build and run `main.py` using hypercorn. Example: `hypercorn main:app --bind [::]:$PORT3`
 
 <br>
 
